@@ -65,9 +65,13 @@ sb.append("]");
                     .collect(Collectors.toList());
 
             ArrayList<Employee> filteredListAsArrayList = new ArrayList<>(filteredEmployees);
-
+//filter upcomming month only
+List<Employee> upcomingMonthEmployees = filteredEmployees.stream()
+    .filter(employee -> employee.getEmploymentDate().getMonth() == upcomingMonth.getMonth())
+     .collect(Collectors.toList());
+            ArrayList<Employee> monthlyfilteredListAsArrayList = new ArrayList<>(upcomingMonthEmployees);
             // Print filtered employees
-            displayInJson(filteredListAsArrayList);
+            displayInJson(monthlyfilteredListAsArrayList);
         } else {
             // Handle other choices
         }
